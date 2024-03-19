@@ -1,21 +1,28 @@
 import "./index.css";
 import Navbar from "./Components/Fragments/Navbar/Navbar";
-import Hero from "./Components/Fragments/Hero/Hero";
+import Hero from "./Components/Layouts/Hero";
 import Work from "./Components/Fragments/Work/Work";
-import About from "./Components/Fragments/About/About";
+import About from "./Components/Layouts/About";
 import Sosmed from "./Components/Fragments/Sosmed/Sosmed";
 import ProjectPage from "./Components/Layouts/ProjectPage";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
   return (
-    <div className="relative flex flex-col gap-16 bg-bg text-primary w-full px-5 overflow-x-hidden">
-      <Navbar />
+    <main className="relative flex flex-col gap-16 bg-bg text-primary w-full px-5 overflow-x-hidden overflow-y-hidden">
       <Hero />
-      <About />
-      <Work />
       <Sosmed />
+      <About />
+      <Navbar />
+      <Work />
       <ProjectPage />
-    </div>
+    </main>
   );
 }
 

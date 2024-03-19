@@ -1,6 +1,6 @@
 const ProgrammingItems = () => {
   return (
-    <div className="flex flex-wrap items-center gap-5">
+    <div className="flex flex-wrap gap-x-5 items-center gap-y-6">
       <svg
         fill="#444547"
         height="44"

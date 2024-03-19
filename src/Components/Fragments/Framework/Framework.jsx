@@ -3,8 +3,8 @@ import FrameworkItems from "../../atoms/framework";
 
 const Framework = () => {
   return (
-    <div className="relative w-[110%] md:justify-center border border-t-0 border-stroke flex gap-4 flex-wrap py-4">
-      <h6 className="text-[34px] w-[325px] font-medium leading-[45px] tracking-[1%]">
+    <div className="flex flex-wrap min-h-fit min-w-[90%] items-center justify-between gap-4">
+      <h6 className="text-[34px] font-medium leading-[45px] tracking-[1%]">
         FRAMEWORK
       </h6>
       <FrameworkItems />

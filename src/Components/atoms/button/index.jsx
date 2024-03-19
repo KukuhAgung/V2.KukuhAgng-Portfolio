@@ -1,18 +1,65 @@
-const Button = (props) => {
-  const {
-    children,
-    variant = "bg-black",
-    onClick = {},
-    type = "button",
-  } = props;
-  return (
-    <button
-      className={`h-10 px-6 font-semibold rounded-md ${variant} text-white`}
-      type={type}
-    >
-      {children}
-    </button>
-  );
-};
+import React from "react";
+import { useEffect, useRef } from "react";
+import styles from "./button.style.module.scss";
+import gsap from "gsap";
+import Magnetic from "../magnetic/index.jsx";
 
-export default Button;
+export default function index({
+  children,
+  backgroundColor = "#faefae",
+  ...attributes
+}) {
+  const circle = useRef(null);
+  let timeline = useRef(null);
+  let timeoutId = null;
+  useEffect(() => {
+    timeline.current = gsap.timeline({ paused: true });
+    timeline.current
+      .to(
+        circle.current,
+        { top: "-25%", width: "150%", duration: 0.4, ease: "power3.in" },
+        "enter"
+      )
+      .to(
+        circle.current,
+        { top: "-150%", width: "125%", duration: 0.25 },
+        "exit"
+      );
+  }, []);
+
+  const manageMouseEnter = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeline.current.tweenFromTo("enter", "exit");
+  };
+
+  const manageMouseLeave = () => {
+    timeoutId = setTimeout(() => {
+      timeline.current.play();
+    }, 300);
+  };
+
+  return (
+    <Magnetic>
+      <div className="w-full min-h-[30vh] flex items-center justify-center">
+        <div
+          className={styles.roundedButton}
+          style={{ overflow: "hidden" }}
+          onMouseEnter={() => {
+            manageMouseEnter();
+          }}
+          onMouseLeave={() => {
+            manageMouseLeave();
+          }}
+          {...attributes}
+        >
+          {children}
+          <div
+            ref={circle}
+            style={{ backgroundColor }}
+            className={styles.circle}
+          ></div>
+        </div>
+      </div>
+    </Magnetic>
+  );
+}

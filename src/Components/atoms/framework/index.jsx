@@ -2,9 +2,9 @@ import React from "react";
 
 const FrameworkItems = () => {
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-3">
+    <div className="flex flex-wrap gap-y-3 gap-x-3">
       <svg
-        width="153"
+        width="148"
         height="46"
         viewBox="0 0 114 29"
         fill="none"
@@ -21,7 +21,7 @@ const FrameworkItems = () => {
       </svg>
 
       <svg
-        width="195"
+        width="180"
         height="47"
         viewBox="0 0 151 19"
         fill="none"
@@ -42,8 +42,8 @@ const FrameworkItems = () => {
       </svg>
 
       <svg
-        width="168"
-        height="41"
+        width="170"
+        height="45"
         viewBox="0 0 122 31"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
