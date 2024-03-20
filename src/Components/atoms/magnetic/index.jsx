@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { gsap, TweenMax } from "gsap";
+import { gsap } from "gsap";
 
-export default function MagneticAnimation({ children }) {
+export default function Magnetic({ children }) {
   const magnetic = useRef(null);
 
   useEffect(() => {
@@ -22,14 +22,12 @@ export default function MagneticAnimation({ children }) {
       const y = clientY - (top + height / 2);
       xTo(x * 0.35);
       yTo(y * 0.35);
-      TweenMax.to(magnetic.current, 0.5, { scale: 1.1 }); // Scale up when mouse moves
     });
     magnetic.current.addEventListener("mouseleave", (e) => {
       xTo(0);
       yTo(0);
-      TweenMax.to(magnetic.current, 0.5, { scale: 1 }); // Reset scale when mouse leaves
     });
   }, []);
 
-  return React.cloneElement(children, { ref: magnetic });
+  return <div ref={magnetic}>{children}</div>;
 }

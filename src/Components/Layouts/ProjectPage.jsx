@@ -4,10 +4,7 @@ import { useState } from "react";
 import Project from "../atoms/project";
 import Modal from "../atoms/modal/index";
 import Button from "../atoms/button/index";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect } from "react";
-import { useEffect } from "react";
+import Projects from "../Fragments/Projects/index";
 
 const projects = [
   {
@@ -37,7 +34,11 @@ export default function ProjectPage() {
 
   return (
     <main>
-      <h6 className="my-20 text-[54px] w-[440px] font-medium leading-[45px] tracking-[1%]">
+      <h6
+        data-scroll
+        data-scroll-speed="0.1"
+        className="my-20 text-[54px] w-[440px] font-medium leading-[45px] tracking-[1%]"
+      >
         PROJECT
       </h6>
       <section className="min-h-fit flex flex-col items-center justify-center">
@@ -54,10 +55,11 @@ export default function ProjectPage() {
           })}
         </div>
         <Modal modal={modal} projects={projects} />
+        <Button>
+          <p>More Project</p>
+        </Button>
+        <Projects />
       </section>
-      <Button>
-        <p>More Project</p>
-      </Button>
     </main>
   );
 }
