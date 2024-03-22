@@ -42,7 +42,7 @@ export const ProjectsParallax = ({ products }) => {
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden bottom-5 antialiased relative flex flex-col self-auto [perspective:600x] [transform-style:preserve-3d] bg-bg"
+      className="h-[250vh] py-40 overflow-hidden bottom-5 antialiased relative flex flex-col self-auto [perspective:600x] [transform-style:preserve-3d] bg-bg"
     >
       <motion.div
         style={{
