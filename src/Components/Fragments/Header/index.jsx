@@ -1,55 +1,43 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/src/ScrollTrigger";
+import { motion } from "framer-motion";
+import Magnetic from "../../atoms/magnetic";
 import styles from "./style.module.scss";
-import Paragraph from "../../atoms/paragraph/Paragraph";
 
-const paragraph = `A frontend developer based on Indonesia. Scroll to explore my work
-below`;
-export default function index() {
-  const firstText = useRef(null);
-  const secondText = useRef(null);
-  const slider = useRef(null);
-  let xPercent = 0;
-  let direction = -1;
+const scaleAnimation = {
+  initial: { scale: 0, x: "0%", y: "0%" },
+  enter: {
+    scale: 1,
+    x: "0%",
+    y: "0%",
+    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+  closed: {
+    scale: 0,
+    x: "0%",
+    y: "0%",
+    transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
+  },
+};
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(slider.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        scrub: 0.5,
-        start: 0,
-        end: window.innerHeight,
-        onUpdate: (e) => (direction = e.direction * -1),
-      },
-      x: "-500px",
-    });
-
-    requestAnimationFrame(animate);
-  }, []);
-
-  const animate = () => {
-    if (xPercent < -100) {
-      xPercent = 0;
-    } else if (xPercent > 0) {
-      xPercent = -100;
-    }
-    gsap.set(firstText.current, { xPercent: xPercent });
-    gsap.set(secondText.current, { xPercent: xPercent });
-    requestAnimationFrame(animate);
-    xPercent += 0.01 * direction;
-  };
-
+export default function index({
+  menuIsActive,
+  setMenuIsActive,
+  preloaderDone,
+}) {
   return (
-    <main className="relative flex justify-center h-screen w-[120vw] overflow-hidden bg-[url('image/bg.png')] bg-no-repeat bg-cover bg-fixed bg-top md:bg-right">
-      <div className={styles.sliderContainer}>
-        <div ref={slider} className={styles.slider}>
-          <p ref={firstText}>FrontEnd Developer -</p>
-
-          <p ref={secondText}>FrontEnd Developer -</p>
-        </div>
-      </div>
-    </main>
+    <div className={styles.header}>
+      <Magnetic>
+        <motion.div
+          variants={scaleAnimation}
+          initial={"initial"}
+          animate={preloaderDone ? "enter" : "closed"}
+          onClick={() => {
+            setMenuIsActive(!menuIsActive);
+          }}
+          className={`${styles.burger} ${
+            menuIsActive ? styles.burgerActive : ""
+          }`}
+        ></motion.div>
+      </Magnetic>
+    </div>
   );
 }

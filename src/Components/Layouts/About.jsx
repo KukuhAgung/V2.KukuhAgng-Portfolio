@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import Paragraph from "../atoms/paragraph/Paragraph";
 import Sosmed from "./../Fragments/Sosmed/Sosmed";
 
 const paragraph =
   "Curently I’m a student at SMK Telkom Purwokerto, I have an interest in website programming, especially as a frontend developer.";
 function About({ ref }) {
+  const container = useRef(ref);
   return (
     <div ref={ref} className="relative w-full flex h-screen md:justify-center">
       <div className="md:w-[812px] py-6">

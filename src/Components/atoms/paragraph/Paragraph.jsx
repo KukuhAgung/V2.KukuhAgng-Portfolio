@@ -1,7 +1,6 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useRef } from "react";
 
-
 export default function Paragraph({ paragraph }) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -11,7 +10,10 @@ export default function Paragraph({ paragraph }) {
 
   const words = paragraph.split(" ");
   return (
-    <h6 ref={container} className="flex flex-wrap text-[36px] md:text-[40px] font-medium leading-[45px] tracking-[1%] max-w-[800px]">
+    <h6
+      ref={container}
+      className="flex flex-wrap text-[36px] md:text-[40px] font-medium font-serif leading-[45px] tracking-[1%] max-w-[800px]"
+    >
       {words.map((word, i) => {
         const start = i / words.length;
         const end = start + 1 / words.length;
