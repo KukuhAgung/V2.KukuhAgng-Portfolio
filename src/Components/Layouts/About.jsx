@@ -7,7 +7,7 @@ const paragraph =
 function About({ ref }) {
   const container = useRef(ref);
   return (
-    <div ref={ref} className="relative w-full flex h-screen md:justify-center">
+    <div ref={ref} className="relative w-full flex h-[60vh] md:justify-center">
       <div className="md:w-[812px] py-6">
         <div data-scroll data-scroll-speed="0.07" className="w-full p-2">
           <h1 className="text-[18px] font-bold tracking-[1%]">ABOUT ME</h1>

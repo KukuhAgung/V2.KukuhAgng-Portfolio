@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import Contact from "./Components/Layouts/Contact.jsx";
 import Menu from "./Components/Fragments/Menu/index.jsx";
 import HorizontalPixelTransition from "./Components/atoms/pixel/horizontal/index.jsx";
+import Skills from "./Components/Layouts/Skills.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -78,6 +79,7 @@ function App() {
       )}
       <Hero />
       <About ref={aboutRef} />
+      <Skills />
       <ProjectPage />
       <Contact />
     </main>

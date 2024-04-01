@@ -4,8 +4,7 @@ import ScrollTrigger from "gsap/src/ScrollTrigger";
 import styles from "./style.module.scss";
 import Paragraph from "../../atoms/paragraph/Paragraph";
 
-const paragraph = `A frontend developer based on Indonesia. Scroll to explore my work
-below`;
+
 export default function index() {
   const firstText = useRef(null);
   const secondText = useRef(null);
