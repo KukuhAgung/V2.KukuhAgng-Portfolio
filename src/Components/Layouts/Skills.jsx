@@ -1,31 +1,91 @@
-import React from "react";
-import Paragraph from "../atoms/paragraph/Paragraph";
 import Button from "../atoms/button/index";
-import Magnetic from "../atoms/magnetic";
+import { techimg, toolsimg } from "../../assets/data";
+import Card from "../atoms/card/index";
+import { useState, useEffect } from "react";
 
-const paragraph = "There is a some programming languages & tools that i can.";
 const Skills = () => {
+  const [isTools, setIsTools] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleTech = () => {
+    if (isTools) {
+      setIsTools(false);
+      setIsLoading(true);
+    }
+  };
+
+  const handleTools = () => {
+    if (!isTools) {
+      setIsTools(true);
+      setIsLoading(true);
+    }
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [isTools]);
+
   return (
-    <div className="relative w-full flex h-screen md:justify-center">
-      <div className="md:w-[80%] py-6">
-        <div data-scroll data-scroll-speed="0.2" className="w-full p-2">
-          <h1 className="text-[2rem] font-bold tracking-[1%]">What I Do.</h1>
+    <section className="relative w-full flex h-[60vh] md:justify-center p-2">
+      <div className="md:w-[812px] flex flex-col gap-y-6">
+        <div data-scroll data-scroll-speed="0.05" className="w-full">
+          <h1 className="text-[1.5rem] font-bold tracking-[1%]">SKILLS</h1>
         </div>
-        <div data-scroll data-scroll-speed="0.2" className="w-full p-2">
-          <Paragraph paragraph={paragraph} key={1} />
-        </div>
-        <div data-scroll data-scroll-speed="0.2" className="p-2 w-fit mt-4">
-          <Magnetic>
-            <a
-              href=""
-              className="px-10 py-6 rounded-full bg-gradient-to-r from-bg via-grad2 to-grad1 shadow-lg font-medium"
+        <div
+          data-scroll
+          data-scroll-speed="0.05"
+          className="w-full flex gap-x-4"
+        >
+          <div onClick={handleTech}>
+            <Button
+              backgroundColor="#444547"
+              rounded="rounded-xl"
+              margin="mt-0"
             >
-              Go to my github
-            </a>
-          </Magnetic>
+              <p>Tech Stack</p>
+            </Button>
+          </div>
+          <div onClick={handleTools}>
+            <Button
+              backgroundColor="#444547"
+              rounded="rounded-xl"
+              margin="mt-0"
+            >
+              <p>Tools</p>
+            </Button>
+          </div>
         </div>
+        {isLoading ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="loading loading-infinity loading-lg"></span>
+          </div>
+        ) : (
+          <div
+            data-scroll
+            data-scroll-speed="0.1"
+            className="flex flex-wrap gap-x-4 gap-y-4"
+          >
+            {isTools
+              ? toolsimg.map((item) => (
+                  <Card Loading={isLoading} key={item.id}>
+                    <img src={item.img} alt={item.name} />
+                    <p>{item.name}</p>
+                  </Card>
+                ))
+              : techimg.map((item) => (
+                  <Card Loading={isLoading} key={item.id}>
+                    <img src={item.img} alt={item.name} />
+                    <p>{item.name}</p>
+                  </Card>
+                ))}
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 

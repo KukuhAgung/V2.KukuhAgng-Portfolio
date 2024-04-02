@@ -1,10 +1,17 @@
 import React from "react";
 import Magnetic from "../../atoms/magnetic/index.jsx";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../utils/variants.js";
 
 function Sosmed() {
   return (
-    <div className="absolute hidden top-[5%] left-20 md:flex flex-col gap-12  justify-center items-center h-screen w-[50px]">
+    <motion.div
+      variants={fadeIn("up", 0.1)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.3 }}
+      className="absolute hidden top-[5%] left-20 md:flex flex-col gap-12  justify-center items-center h-screen w-[50px]"
+    >
       <Magnetic>
         <svg
           data-scroll
@@ -59,7 +66,7 @@ function Sosmed() {
           />
         </svg>
       </Magnetic>
-    </div>
+    </motion.div>
   );
 }
 

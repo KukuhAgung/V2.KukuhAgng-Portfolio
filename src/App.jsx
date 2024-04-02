@@ -61,7 +61,7 @@ function App() {
   }, []);
 
   return (
-    <main className="relative flex flex-col gap-16 bg-bg text-primary w-full align-middle overflow-x-hidden overflow-y-hidden">
+    <main className="relative flex flex-col gap-16 bg-bg text-primary w-full align-middle overflow-y-hidden">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -79,7 +79,7 @@ function App() {
       )}
       <Hero />
       <About ref={aboutRef} />
-      <Skills />
+      <Skills/>
       <ProjectPage />
       <Contact />
     </main>

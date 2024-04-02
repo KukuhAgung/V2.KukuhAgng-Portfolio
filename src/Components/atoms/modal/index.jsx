@@ -47,7 +47,6 @@ export default function index({ modal, projects }) {
   const cursorLabel = useRef(null);
 
   useEffect(() => {
-
     let xMoveContainer = gsap.quickTo(modalContainer.current, "left", {
       duration: 0.8,
       ease: "power3",

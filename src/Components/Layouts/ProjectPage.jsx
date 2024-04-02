@@ -1,31 +1,28 @@
-"use client";
-
 import { useState } from "react";
 import Project from "../atoms/project";
 import Modal from "../atoms/modal/index";
 import Button from "../atoms/button/index";
 import Projects from "../Fragments/Projects/index";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/variants";
 
 const projects = [
   {
     title: "AI DOG DISEASE DETECTOR",
-
     src: "sistempakar.jpg",
-
+    link: "KukuhAgung/SistemPakar",
     color: "#292D32",
   },
   {
     title: "BOOKSTORE WEBSITE",
-
     src: "bookstore.png",
-
+    link: "KukuhAgung/MK3-PTS",
     color: "#e5e5e5",
   },
   {
     title: "Web Portfolio V1",
-
     src: "Web-V1.png",
-
+    link: "KukuhAgung/Portfolio-KukuhAgung",
     color: "#292D32",
   },
 ];
@@ -42,7 +39,13 @@ export default function ProjectPage() {
         PROJECT
       </h6>
       <section className="min-h-fit flex flex-col items-center justify-center">
-        <div className="w-full flex flex-col">
+        <motion.div
+          variants={fadeIn("up", 0.1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.3 }}
+          className="w-full flex flex-col"
+        >
           {projects.map((project, index) => {
             return (
               <Project
@@ -50,15 +53,17 @@ export default function ProjectPage() {
                 title={project.title}
                 setModal={setModal}
                 key={index}
+                link={project.link}
               />
             );
           })}
-        </div>
+        </motion.div>
         <Modal modal={modal} projects={projects} />
         <Button>
-          <p>More Project</p>
+          <a href="https://github.com/KukuhAgung/">
+            <p>More Project</p>
+          </a>
         </Button>
-        <Projects />
       </section>
     </main>
   );

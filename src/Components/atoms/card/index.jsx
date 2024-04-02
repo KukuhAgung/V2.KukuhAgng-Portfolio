@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-import styles from "./button.style.module.scss";
+import styles from "./card.style.module.scss";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../utils/variants";
 import gsap from "gsap";
-import Magnetic from "../magnetic/index.jsx";
 
 export default function index({
   children,
-  backgroundColor = "#faefae",
-  rounded = "rounded-full",
-  margin = "mt-10",
+  backgroundColor = "#444547",
+  Loading,
   ...attributes
 }) {
   const circle = useRef(null);
@@ -41,27 +41,27 @@ export default function index({
   };
 
   return (
-    <Magnetic>
-      <div className="flex items-center justify-center">
-        <div
-          className={`${rounded} cursor-pointer relative flex items-center justify-center w-[12rem] h-[3rem] ${styles.roundedButton} ${margin}`}
-          style={{ overflow: "hidden" }}
-          onMouseEnter={() => {
-            manageMouseEnter();
-          }}
-          onMouseLeave={() => {
-            manageMouseLeave();
-          }}
-          {...attributes}
-        >
-          {children}
-          <div
-            ref={circle}
-            style={{ backgroundColor }}
-            className={styles.circle}
-          ></div>
-        </div>
-      </div>
-    </Magnetic>
+    <motion.div
+      className={styles.roundedButton}
+      variants={fadeIn("up", 0.1)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.3 }}
+      style={{ overflow: "hidden" }}
+      onMouseEnter={() => {
+        manageMouseEnter();
+      }}
+      onMouseLeave={() => {
+        manageMouseLeave();
+      }}
+      {...attributes}
+    >
+      {children}
+      <div
+        ref={circle}
+        style={{ backgroundColor }}
+        className={styles.circle}
+      ></div>
+    </motion.div>
   );
 }
