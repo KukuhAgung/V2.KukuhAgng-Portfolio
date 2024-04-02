@@ -25,16 +25,22 @@ const projects = [
     link: "KukuhAgung/Portfolio-KukuhAgung",
     color: "#292D32",
   },
+  {
+    title: "NEWS WEBSITE + OPEN API",
+    src: "news.png",
+    link: "KukuhAgung/NewsIN-Website",
+    color: "#292D32",
+  },
 ];
-export default function ProjectPage() {
+export default function ProjectPage({ sectionRef }) {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <main>
+    <section ref={sectionRef}>
       <h6
         data-scroll
         data-scroll-speed="0.1"
-        className="my-20 text-[54px] w-[440px] font-medium leading-[45px] tracking-[1%]"
+        className="my-10 text-[54px] w-[440px] font-medium leading-[45px] tracking-[1%]"
       >
         PROJECT
       </h6>
@@ -65,6 +71,6 @@ export default function ProjectPage() {
           </a>
         </Button>
       </section>
-    </main>
+    </section>
   );
 }

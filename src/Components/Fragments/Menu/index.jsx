@@ -13,7 +13,13 @@ const anim = {
   },
 };
 
-export default function index({ menuIsActive }) {
+export default function index({ menuIsActive, Home, About, Work, Contact }) {
+  const scrollToSection = (elementRef) => {
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
   return (
     <motion.div
       className={`fixed flex-col items-center justify-center h-[90vh] w-full z-[98] ${
@@ -23,9 +29,20 @@ export default function index({ menuIsActive }) {
       initial="initial"
       animate={menuIsActive ? "open" : "closed"}
     >
-      <p className="text-[5vw] m-[5px] text-bg">Home</p>
-      <p className="text-[5vw] m-[5px] text-bg">About</p>
-      <p className="text-[5vw] m-[5px] text-bg">Contact</p>
+      <p
+        onClick={() => scrollToSection(Home)}
+        className="text-[5vw] m-[5px] text-bg cursor-pointer"
+      >
+        Home
+      </p>
+      <p
+        onClick={() => scrollToSection(About)}
+        className="text-[5vw] m-[5px] text-bg"
+      >
+        About
+      </p>
+      <p onClick={() => scrollToSection(Work)} className="text-[5vw] m-[5px] text-bg">Work</p>
+      <p onClick={() => scrollToSection(Contact)} className="text-[5vw] m-[5px] text-bg">Contact</p>
     </motion.div>
   );
 }

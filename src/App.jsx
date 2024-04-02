@@ -16,7 +16,10 @@ function App() {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [preloaderDone, setPreloaderDone] = useState(false);
-  const aboutRef = useRef(null);
+  const Homeref = useRef(null);
+  const Aboutref = useRef(null);
+  const Workref = useRef(null);
+  const Contactref = useRef(null);
 
   const updateDimensions = () => {
     const { innerWidth, innerHeight } = window;
@@ -45,23 +48,8 @@ function App() {
     })();
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        aboutRef.current &&
-        window.scrollY + window.innerHeight >= aboutRef.current.offsetTop
-      ) {
-        setPreloaderDone(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <main className="relative flex flex-col gap-16 bg-bg text-primary w-full align-middle overflow-y-hidden">
+    <main className="relative flex flex-col gap-16 bg-bg text-primary w-full align-middle overflow-x-hidden overflow-y-hidden">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -70,18 +58,24 @@ function App() {
         setMenuIsActive={setMenuIsActive}
         preloaderDone={preloaderDone}
       />
-      <Menu menuIsActive={menuIsActive} />
+      <Menu
+        menuIsActive={menuIsActive}
+        Home={Homeref}
+        About={Aboutref}
+        Work={Workref}
+        Contact={Contactref}
+      />
       {dimensions.height > 0 && (
         <HorizontalPixelTransition
           menuIsActive={menuIsActive}
           dimensions={dimensions}
         />
       )}
-      <Hero />
-      <About ref={aboutRef} />
-      <Skills/>
-      <ProjectPage />
-      <Contact />
+      <Hero ref={Homeref} />
+      <About sectionRef={Aboutref} />
+      <Skills />
+      <ProjectPage sectionRef={Workref} />
+      <Contact Home={Homeref} sectionRef={Contactref} />
     </main>
   );
 }
