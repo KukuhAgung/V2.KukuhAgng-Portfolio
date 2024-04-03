@@ -14,6 +14,7 @@ export default {
       },
       backgroundImage: {
         cursor: "url('/image/cursor.svg')",
+        bgimg: "url('../image/bg.png')"
       },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],

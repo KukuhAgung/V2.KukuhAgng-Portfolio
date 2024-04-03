@@ -13,7 +13,7 @@ function Sosmed() {
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: false, amount: 0.3 }}
-      className="absolute hidden top-[5%] left-20 md:flex flex-col gap-12  justify-center items-center h-screen w-[50px]"
+      className="absolute hidden top-[5%] left-20 md:flex flex-col gap-12  justify-center items-center h-screen w-[50px] z-10"
     >
       <Magnetic>
         <a href="https://github.com/KukuhAgung">

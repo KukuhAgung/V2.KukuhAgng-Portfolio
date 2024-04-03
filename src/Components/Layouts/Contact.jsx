@@ -7,25 +7,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
 import { ScrollToTop } from "../../utils/ScrollToTop";
+import { Link } from "react-scroll";
 
-function Contact({ sectionRef, Home, About, Work }) {
+function Contact() {
   const [localTime, setLocalTime] = useState("");
-  const [scrollY, setScrollY] = useState(window.scrollY);
-
-  const backToSection = (elementRef) => {
-    window.scrollTo({
-      top: elementRef,
-      behavior: "smooth",
-    });
-  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     const intervalId = setInterval(() => {
       const now = new Date();
       const options = {
@@ -38,16 +25,12 @@ function Contact({ sectionRef, Home, About, Work }) {
       setLocalTime(formattedTime);
     }, 1000);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearInterval(intervalId);
-    };
+    return () => clearInterval(intervalId);
   }, []);
 
-  console.log(scrollY);
   return (
     <section
-      ref={sectionRef}
+      id="Contact"
       className="w-full flex items-center gap-y-10 h-fit md:h-[80vh] p-2 my-10"
     >
       <div className="w-full flex flex-col gap-y-10 my-10">
@@ -65,27 +48,42 @@ function Contact({ sectionRef, Home, About, Work }) {
             viewport={{ once: false, amount: 0.3 }}
             className="w-full md:w-[20%] flex flex-col gap-y-4 border-b border-second pb-6"
           >
-            <h6
-              onClick={() => backToSection(Home)}
+            <Link
+              to="Home"
+              smooth={true}
+              spy={true}
+              offset={-200}
               className="text-[20px] font-medium tracking-[1%] cursor-pointer"
             >
               HOME
-            </h6>
-            <h6
-              onClick={() => backToSection(About)}
+            </Link>
+            <Link
+              to="About"
+              smooth={true}
+              spy={true}
+              offset={-200}
               className="text-[20px] font-medium tracking-[1%] cursor-pointer"
             >
               ABOUT
-            </h6>
-            <h6
-              onClick={() => backToSection(Work)}
+            </Link>
+            <Link
+              to="Work"
+              smooth={true}
+              spy={true}
+              offset={-200}
               className="text-[20px] font-medium tracking-[1%] cursor-pointer"
             >
               WORK
-            </h6>
-            <h6 className="text-[20px] font-medium tracking-[1%] cursor-pointer">
+            </Link>
+            <Link
+              to="Contact"
+              smooth={true}
+              spy={true}
+              offset={-200}
+              className="text-[20px] font-medium tracking-[1%] cursor-pointer"
+            >
               CONTACT
-            </h6>
+            </Link>
           </motion.div>
           <div className="w-full md:w-[40%] flex flex-wrap md:flex-nowrap">
             <motion.div

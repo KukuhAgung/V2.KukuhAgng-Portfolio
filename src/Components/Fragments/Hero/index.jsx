@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import styles from "./style.module.scss";
-import Paragraph from "../../atoms/paragraph/Paragraph";
-
 
 export default function index() {
   const firstText = useRef(null);
@@ -41,7 +39,9 @@ export default function index() {
   };
 
   return (
-    <main className="relative flex justify-center h-screen w-[120vw] overflow-hidden bg-[url('image/bg.png')] bg-no-repeat bg-cover bg-fixed bg-top md:bg-right">
+    <main
+      className={`relative flex justify-center h-screen w-[120vw] overflow-hidden bg-bgimg bg-no-repeat bg-cover bg-fixed bg-top md:bg-right`}
+    >
       <div className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
           <p ref={firstText}>FrontEnd Developer -</p>

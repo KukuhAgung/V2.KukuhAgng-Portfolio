@@ -32,11 +32,11 @@ const projects = [
     color: "#292D32",
   },
 ];
-export default function ProjectPage({ sectionRef }) {
+export default function ProjectPage() {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <section ref={sectionRef}>
+    <section id="Work">
       <h6
         data-scroll
         data-scroll-speed="0.1"

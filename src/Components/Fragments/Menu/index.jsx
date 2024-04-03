@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const anim = {
   initial: {
@@ -13,21 +14,7 @@ const anim = {
   },
 };
 
-export default function index({
-  menuIsActive,
-  setMenuIsActive,
-  Home,
-  About,
-  Work,
-  Contact,
-}) {
-  const scrollToSection = (elementRef) => {
-    setMenuIsActive(false);
-    window.scrollTo({
-      top: elementRef.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
+export default function index({ menuIsActive, setMenuIsActive }) {
   return (
     <motion.div
       className={`fixed flex-col items-center justify-center h-[90vh] w-full z-[98] ${
@@ -37,30 +24,46 @@ export default function index({
       initial="initial"
       animate={menuIsActive ? "open" : "closed"}
     >
-      <p
-        onClick={() => scrollToSection(Home)}
+      <Link
+        onClick={() => setMenuIsActive(false)}
+        to="Home"
+        smooth={true}
+        spy={true}
+        offset={-200}
         className="text-[5vw] m-[5px] text-bg cursor-pointer"
       >
         Home
-      </p>
-      <p
-        onClick={() => scrollToSection(About)}
+      </Link>
+      <Link
+        onClick={() => setMenuIsActive(false)}
+        to="About"
+        smooth={true}
+        spy={true}
+        offset={-200}
         className="text-[5vw] m-[5px] text-bg"
       >
         About
-      </p>
-      <p
-        onClick={() => scrollToSection(Work)}
+      </Link>
+      <Link
+        onClick={() => setMenuIsActive(false)}
+        to="Work"
+        smooth={true}
+        spy={true}
+        offset={-200}
         className="text-[5vw] m-[5px] text-bg"
       >
         Work
-      </p>
-      <p
-        onClick={() => scrollToSection(Contact)}
+      </Link>
+      <Link
+        onClick={() => setMenuIsActive(false)}
+        to="Contact"
+        smooth={true}
+        spy={true}
+        offset={-200}
         className="text-[5vw] m-[5px] text-bg"
       >
         Contact
-      </p>
+      </Link>
     </motion.div>
   );
 }
