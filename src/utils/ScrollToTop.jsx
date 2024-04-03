@@ -38,7 +38,7 @@ export const ScrollToTop = () => {
           whileInView={"show"}
           viewport={{ once: false, amount: 0.3 }}
           onClick={scrollTop}
-          className="absolute bottom-0 right-0"
+          className="absolute -bottom-10 md:bottom-0 right-0"
         >
           <Button margin="mt-0" backgroundColor="#444547">
             <p>⬆️</p>

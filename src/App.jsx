@@ -60,6 +60,7 @@ function App() {
       />
       <Menu
         menuIsActive={menuIsActive}
+        setMenuIsActive={setMenuIsActive}
         Home={Homeref}
         About={Aboutref}
         Work={Workref}
@@ -75,7 +76,7 @@ function App() {
       <About sectionRef={Aboutref} />
       <Skills />
       <ProjectPage sectionRef={Workref} />
-      <Contact Home={Homeref} sectionRef={Contactref} />
+      <Contact Home={0} About={700} Work={1650} sectionRef={Contactref} />
     </main>
   );
 }

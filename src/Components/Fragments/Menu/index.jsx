@@ -13,8 +13,16 @@ const anim = {
   },
 };
 
-export default function index({ menuIsActive, Home, About, Work, Contact }) {
+export default function index({
+  menuIsActive,
+  setMenuIsActive,
+  Home,
+  About,
+  Work,
+  Contact,
+}) {
   const scrollToSection = (elementRef) => {
+    setMenuIsActive(false);
     window.scrollTo({
       top: elementRef.current.offsetTop,
       behavior: "smooth",
@@ -41,8 +49,18 @@ export default function index({ menuIsActive, Home, About, Work, Contact }) {
       >
         About
       </p>
-      <p onClick={() => scrollToSection(Work)} className="text-[5vw] m-[5px] text-bg">Work</p>
-      <p onClick={() => scrollToSection(Contact)} className="text-[5vw] m-[5px] text-bg">Contact</p>
+      <p
+        onClick={() => scrollToSection(Work)}
+        className="text-[5vw] m-[5px] text-bg"
+      >
+        Work
+      </p>
+      <p
+        onClick={() => scrollToSection(Contact)}
+        className="text-[5vw] m-[5px] text-bg"
+      >
+        Contact
+      </p>
     </motion.div>
   );
 }
