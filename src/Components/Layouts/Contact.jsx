@@ -1,16 +1,31 @@
-import styles from "../../utils/style.module.scss";
 import { MdEmail, MdLocationPin } from "react-icons/md";
 import { FaSquareGithub, FaSquareInstagram } from "react-icons/fa6";
-import { FaTiktok, FaArrowUp } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
 import { ScrollToTop } from "../../utils/ScrollToTop";
 import { Link } from "react-scroll";
 
 function Contact() {
   const [localTime, setLocalTime] = useState("");
+
+  const variant = {
+    hidden: {
+      opacity: 0,
+      width: 0,
+    },
+    visible: {
+      opacity: 1,
+      width: "100%",
+      transition: {
+        duration: 1,
+        easeInOut,
+        delay: 0.5,
+      },
+    },
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -34,19 +49,24 @@ function Contact() {
       className="w-full flex items-center gap-y-10 h-fit md:h-[80vh] p-2 my-10"
     >
       <div className="w-full flex flex-col gap-y-10 my-10">
-        <div className={styles.header}>
+        <div className="relative cursor-pointer">
           <h1 className="text-center text-[4rem] font-medium tracking-[1%]">
             GET IN TOUCH
           </h1>
-          <span></span>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-y-6 ">
+        <motion.div className="relative flex flex-wrap md:flex-nowrap gap-y-6 my-5">
+          <motion.span
+            variants={variant}
+            initial="hidden"
+            whileInView="visible"
+            className="absolute bottom-0 h-[1px] bg-second"
+          ></motion.span>
           <motion.div
             variants={fadeIn("up", 0.1)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
-            className="w-full md:w-[20%] flex flex-col gap-y-4 border-b border-second pb-6"
+            className="w-full md:w-[20%] flex flex-col gap-y-4 pb-6"
           >
             <Link
               to="Home"
@@ -91,7 +111,7 @@ function Contact() {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.3 }}
-              className="w-full flex flex-col gap-y-6 border-b border-second pb-6"
+              className="w-full flex flex-col gap-y-4 pb-6"
             >
               <a
                 href="https://github.com/KukuhAgung"
@@ -135,7 +155,7 @@ function Contact() {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.3 }}
-              className="w-full flex flex-col gap-y-1 border-b border-second pb-6"
+              className="w-full flex flex-col gap-y-4  pb-6"
             >
               <div>
                 <div className="w-full flex items-center gap-x-4">
@@ -161,7 +181,7 @@ function Contact() {
               </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
         <div className="relative flex flex-wrap md:flex-row-reverse">
           <ScrollToTop />
           <motion.div

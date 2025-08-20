@@ -1,4 +1,3 @@
-import React from "react";
 import Magnetic from "../../atoms/magnetic/index.jsx";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../utils/variants.js";

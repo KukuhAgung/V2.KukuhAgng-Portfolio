@@ -15,7 +15,7 @@ const words = [
   "Developer",
 ];
 
-export default function index() {
+export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
