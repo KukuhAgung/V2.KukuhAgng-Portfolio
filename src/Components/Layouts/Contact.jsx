@@ -165,7 +165,7 @@ function Contact() {
                   </h6>
                 </div>
                 <h6 className="text-[16px] font-medium tracking-[1%] ml-12">
-                  ff.agri2567@gmail.com
+                  kukuhagung.tp@gmail.com
                 </h6>
               </div>
               <div>

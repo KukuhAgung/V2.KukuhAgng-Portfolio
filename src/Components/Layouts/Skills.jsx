@@ -30,7 +30,7 @@ const Skills = () => {
   }, [isTools]);
 
   return (
-    <section className="relative w-full flex h-[60vh] md:justify-center p-2">
+    <section className="relative w-full flex h-[60vh] md:justify-center items-center p-2">
       <div className="md:w-[812px] flex flex-col gap-y-6">
         <div data-scroll data-scroll-speed="0.05" className="w-full">
           <h1 className="text-[1.5rem] font-bold tracking-[1%]">SKILLS</h1>
@@ -38,7 +38,7 @@ const Skills = () => {
         <div
           data-scroll
           data-scroll-speed="0.05"
-          className="w-full flex gap-x-4"
+          className="w-full flex gap-x-4 md:my-3"
         >
           <div onClick={handleTech}>
             <Button
@@ -67,7 +67,7 @@ const Skills = () => {
           <div
             data-scroll
             data-scroll-speed="0.1"
-            className="flex flex-wrap gap-x-4 gap-y-4"
+            className="flex flex-wrap gap-x-4 gap-y-4 min-h-fit"
           >
             {isTools
               ? toolsimg.map((item) => (

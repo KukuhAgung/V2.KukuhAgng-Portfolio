@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useScroll, useTransform, motion } from "framer-motion";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 export default function Paragraph({ paragraph }) {
   const container = useRef(null);
@@ -12,7 +13,7 @@ export default function Paragraph({ paragraph }) {
   return (
     <h6
       ref={container}
-      className="flex flex-wrap text-[36px] md:text-[40px] font-medium font-serif leading-[45px] tracking-[1%] max-w-[800px]"
+      className="flex flex-wrap text-[24px] md:text-[40px] font-medium font-serif leading-[45px] tracking-[1%] max-w-[800px]"
     >
       {words.map((word, i) => {
         const start = i / words.length;

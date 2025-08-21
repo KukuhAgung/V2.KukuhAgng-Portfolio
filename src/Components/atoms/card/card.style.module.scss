@@ -1,4 +1,5 @@
 .roundedButton {
+  overflow: hidden;
   border-radius: 6px;
   border: 1px solid rgb(136, 136, 136);
   cursor: pointer;
@@ -7,7 +8,7 @@
   gap: 1rem;
   align-items: center;
   padding: 1rem 1rem;
-  width: 13rem;
+  width: 11rem;
   height: 3rem;
   img {
     position: relative;

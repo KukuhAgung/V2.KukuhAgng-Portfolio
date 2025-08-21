@@ -2,7 +2,6 @@ import { useState } from "react";
 import Project from "../atoms/project";
 import Modal from "../atoms/modal/index";
 import Button from "../atoms/button/index";
-import Projects from "../Fragments/Projects/index";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
 

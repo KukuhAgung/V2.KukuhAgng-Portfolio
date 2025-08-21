@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useRef } from "react";
 import styles from "./card.style.module.scss";
 import { motion } from "framer-motion";
@@ -8,7 +8,6 @@ import gsap from "gsap";
 export default function index({
   children,
   backgroundColor = "#444547",
-  Loading,
   ...attributes
 }) {
   const circle = useRef(null);
@@ -47,7 +46,6 @@ export default function index({
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: false, amount: 0.3 }}
-      style={{ overflow: "hidden" }}
       onMouseEnter={() => {
         manageMouseEnter();
       }}

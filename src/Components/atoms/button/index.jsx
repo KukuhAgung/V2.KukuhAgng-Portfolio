@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useRef } from "react";
 import styles from "./button.style.module.scss";
 import gsap from "gsap";
@@ -44,7 +44,7 @@ export default function index({
     <Magnetic>
       <div className="flex items-center justify-center">
         <div
-          className={`${rounded} cursor-pointer relative flex items-center justify-center w-[12rem] h-[3rem] ${styles.roundedButton} ${margin}`}
+          className={`${rounded} cursor-pointer relative flex items-center justify-center w-[10rem] md:w-[12rem] h-[3rem] ${styles.roundedButton} ${margin}`}
           style={{ overflow: "hidden" }}
           onMouseEnter={() => {
             manageMouseEnter();

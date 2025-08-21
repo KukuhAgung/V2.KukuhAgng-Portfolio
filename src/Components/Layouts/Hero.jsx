@@ -1,6 +1,6 @@
 import MoveText from "../Fragments/Hero/index";
 
-function Hero({ sectionRef }) {
+function Hero() {
   return (
     <section
       id="Home"
